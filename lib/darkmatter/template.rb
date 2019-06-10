@@ -17,6 +17,7 @@ module ActionView
     def parse_yaml_front_matter(content)
       yaml_regex = /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
       puts $1
+      puts content =~ yaml_regex
       
       if content =~ yaml_regex
         content = content.sub(yaml_regex, "")
