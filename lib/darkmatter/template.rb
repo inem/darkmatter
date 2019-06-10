@@ -3,7 +3,6 @@ module ActionView
     alias_method :_old_initialize, :initialize
     def initialize(source, identifier, handler, details)
       @data, source = parse_yaml_front_matter(source)
-      puts @data.inspect
       _old_initialize(source, identifier, handler, details)
     end
 
@@ -17,6 +16,8 @@ module ActionView
 
     def parse_yaml_front_matter(content)
       yaml_regex = /\A(---\s*\n.*?\n?)^(---\s*$\n?)/m
+      puts $1
+      
       if content =~ yaml_regex
         content = content.sub(yaml_regex, "")
 
