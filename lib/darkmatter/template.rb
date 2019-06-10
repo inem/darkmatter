@@ -3,6 +3,7 @@ module ActionView
     alias_method :_old_initialize, :initialize
     def initialize(source, identifier, handler, details)
       @data, source = parse_yaml_front_matter(source)
+      puts @data.inspect
       _old_initialize(source, identifier, handler, details)
     end
 
