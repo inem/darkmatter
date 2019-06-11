@@ -2,12 +2,14 @@ module ActionView
   class Template
     alias_method :_old_initialize, :initialize
     def initialize(source, identifier, handler, details)
+      binding.pry
       @data, source = parse_yaml_front_matter(source)
       _old_initialize(source, identifier, handler, details)
     end
 
     alias_method :_old_render, :render
     def render(view, locals, buffer=nil, &block)
+      binding.pry
       view.instance_variable_set(:@page, @data)
       _old_render(view, locals, buffer, &block)
     end
